@@ -206,7 +206,52 @@ The final graph shows the Readmission rate:
 ---
   
 # <B>Feature Selection<B>
-  
+	
+&ensp; Feature selection is an important part of model building and testing. Not every variable is needed for model training and using features that are non-redundant can improve your model (Boruta Feature Selection in R, n.d.). The Boruta algorithm is a wrapper method, used with the random forest algorithm to capture all the most important and interesting features from the dataset. Wrapper methods use a subset of features to train a model, with Forward Selection and Backward Elimination being two examples of wrapper methods (Boruta Feature Selection R, n.d). The drawback to using Boruta is it can be time consuming. The mores variables a dataset has, the longer the Boruta algorithm takes, as it goes through its iterations trying to find the most important features. The longer wait will be worth it when a model can be made with fewer variables without losing accuracy. The code below shows the Boruta algorithm being used on the training dataset.
+	
+![image](https://user-images.githubusercontent.com/87247651/126400784-3c1bcbbd-00e6-41c1-aa67-39137cc3d6c9.png)
+
+After the algorithm is finished, a plot of the variables shows which variables are most important, in green:
+	
+![image](https://user-images.githubusercontent.com/87247651/126400820-fa12dc0f-ae56-4465-8e99-7a6b67ba9bae.png)
+
+The variable “gender” is shown in yellow, meaning Boruta has classified it as tentative. The tentative variable can be verified as rejected or confirmed and a new plot created with the code below:
+	
+![image](https://user-images.githubusercontent.com/87247651/126400850-ddfeab7b-6461-4bb4-bee2-f8cae5b115af.png)
+
+The new plot shows all variables that are confirmed or rejected:
+	
+![image](https://user-images.githubusercontent.com/87247651/126400874-ba5ad958-9c1c-4033-b1b8-0ced8100da5b.png)
+
+![image](https://user-images.githubusercontent.com/87247651/126400881-43d1518a-2199-4645-8b41-88a75ca2ba40.png)
+
+Using the attStats command gives a table with the statistics and decisions for each variable:
+	
+![image](https://user-images.githubusercontent.com/87247651/126400920-cb198bb9-bf60-42bf-850c-cf3da6fa2edd.png)
+
+The “meanImp” scores shows which variables Boruta deems the most important. The decision column makes it easy to understand which variables to keep for further analysis.
+Using the code below, the model formula is shown with the confirmed important attributes:
+
+![image](https://user-images.githubusercontent.com/87247651/126400949-8d343da0-856d-4ba2-a0d0-2928e50f103b.png)
+
+In logistic regression, the absence of multicollinearity is an important issue, and the problem variable or variables should be removed (Kassambara & U, 2018). A logistic regression model is created to check the Variance Inflation Factor, which measures the amount of multicollinearity.
+	
+![image](https://user-images.githubusercontent.com/87247651/126400994-66089c93-1f28-48fe-9bd0-871bfdf95bb4.png)
+
+The VIF can be checked with vif() command in R:
+	
+![image](https://user-images.githubusercontent.com/87247651/126401021-0799f160-0f3e-4129-8772-14f07c6647b0.png)
+
+This error encountered shows there are variables with perfect multicollinearity. This means two or more independent variables are perfectly predicted with no randomness (Perfect Multicollinearity and Your Economic Model, n.d.). To find out what variables are highly correlated, a correlation plot of all numerical variables is created, as seen below:
+	
+![image](https://user-images.githubusercontent.com/87247651/126401052-385f60bd-80b2-44a3-aebb-e32a276809a5.png)
+
+The correlation plot shows perfect collinearity between the log transformed variables of “number_inpatient” and “number_outpatient”. One of these variables will have to be removed. For this study, the “number_outpatient” transformed variable “no” is removed. The model is recreated and VIF function run again, as seen below:
+	
+![image](https://user-images.githubusercontent.com/87247651/126401084-a3a2eb27-992d-4299-9967-57c6187e0049.png)
+
+The Variance Inflation scores now show there is no high correlations present in the model.
+
 ---
   
 # <B>Class Imbalance<B>
