@@ -176,8 +176,8 @@ The highlighted output shows p-value for the “time_in_hospital” variable and
   
 # <B>Distribution of Variables<B>
   
-&ensp; A Q-Q Plot shows the the distribution of the numeric variables. It does so by plotting the quantiles of a normal distribion with the quanitiles of the numeric variables. The blue line on the graphs show perfect distribution with the actual values being in black. The closer the black line is to the blue the more perfect the distribution.
-	
+&ensp; A Q-Q Plot shows the the distribution of the numeric variables. It does so by plotting the quantiles of a normal distribion with the quanitiles of the numeric variables. 
+
 The “num_lab_procedure” variable was not transformed, and the QQ-plot shows the distribution:
 	
 ![image](https://user-images.githubusercontent.com/87247651/126400331-d236fe01-f33f-4a2b-94ec-545db1902eb7.png)
