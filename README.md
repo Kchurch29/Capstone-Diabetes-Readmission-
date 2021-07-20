@@ -68,35 +68,64 @@ Predictive Model for Diabetes Readmission
 # <B>Data Extraction and Preparation<B>
   
 &ensp; The dataset is imported into R Studio as seen below and a new data set named “data” is created to keep the original dataset in the original form:
+	
+![image](https://user-images.githubusercontent.com/87247651/126395421-ee74b5c4-6b14-47a5-9b85-2a30a09b0cae.png)
  
-One of the assumptions of logistic regression is independence of observations (Kassambara & U, 2018), meaning none of the observations should be related to another. Looking at the data, there are multiple records for some patients as they have more than one visit. To keep in line with the independence of observarions assumption the data will be sorted by “patient_nbr”, so that the first record for patients with multiple visits will be kept for further analysis.
- 
+&ensp; One of the assumptions of logistic regression is independence of observations (Kassambara & U, 2018), meaning none of the observations should be related to another. Looking at the data, there are multiple records for some patients as they have more than one visit. To keep in line with the independence of observarions assumption the data will be sorted by “patient_nbr”, so that the first record for patients with multiple visits will be kept for further analysis.
+
+![image](https://user-images.githubusercontent.com/87247651/126395493-f7a1d90f-3ab9-4bb7-b326-64e58ae7c724.png)
+
 The figure above shows the data ordered by “patient_nbr”. The figure below shows a new dataset name “first_patient” being created that only takes the first record for each patient if there are more than one record. This will be the new dataset that variable modifications will be done on.
+	
+![image](https://user-images.githubusercontent.com/87247651/126395520-d0f2da0e-4723-4a0f-9832-039415da0e54.png)
  
-Now that the dataset has the only patient records that will be used, the str() command shows what data type each variable is :
+&ensp; Now that the dataset has the only patient records that will be used, the str() command shows what data type each variable is:
+	
+![image](https://user-images.githubusercontent.com/87247651/126395586-b8cb48b3-fc6f-45ac-8e1f-5e6ec743d78b.png)
  
 To be able to clearly see what variables need to be dropped or altered, a temporary dataset name “factors” will be created and analyzed to see what variables should be dropped or altered.  Once the temporary dataset is created, the variables that are of the character data type will be converted to factors. A str() command confirms the data has been changed to factors. This is done in the screenshot seen below:
+	
+![image](https://user-images.githubusercontent.com/87247651/126395628-0f9a51f5-c5c8-45b3-a811-a5ec26f5e4c0.png)
  
 Using the summary command, the statistics for each variable can been observed to see what further action to take. 
+	
+![image](https://user-images.githubusercontent.com/87247651/126395664-e0b3a03a-61f0-4ac8-8da7-d7a18275295a.png)
+
+&ensp; The figure above shows “race” as having 1948 missing values, and “gender” having 3, so those entries will not be included. The code below shows the process of removing these on the “first_patient” dataset:
  
-The figure above shows “race” as having 1948 missing values, and “gender” having 3, so those entries will not be included. The code below shows the process of removing these on the “first_patient” dataset:
+![image](https://user-images.githubusercontent.com/87247651/126395742-3831236c-a9fd-42d5-875e-91aa5acaa54a.png)
+
+The variable “weight” has over 95 percent missing data and will be dropped. The variables “payer_code” and “medical_specialty” have over 50 percent missing data and will be dropped from further analysis. Looking at the summary of the “factors” dataset, the medications “examide”, “citoglipton” and “glimepiride.ploglitazone” have “No” for all entries and therefore will be dropped from the dataset. The response variable “readmitted” must be binary, and therefore have only two values, to meet an assumption of logistic regression (Zach, 2020). The “readmitted” variable has three values, <30, >30 and “No”. Since this study is only concerned with readmission of less than 30 days, it will be converted so that <30 will be 1, and >30 and “No” will be 0, as seen below:
+	
+![image](https://user-images.githubusercontent.com/87247651/126395789-36abd8cb-ec4f-449b-a217-acd5ddcd6f80.png)
  
- The variable “weight” has over 95 percent missing data and will be dropped. The variables “payer_code” and “medical_specialty” have over 50 percent missing data and will be dropped from further analysis. Looking at the summary of the “factors” dataset, the medications “examide”, “citoglipton” and “glimepiride.ploglitazone” have “No” for all entries and therefore will be dropped from the dataset. The response variable “readmitted” must be binary, and therefore have only two values, to meet an assumption of logistic regression (Zach, 2020). The “readmitted” variable has three values, <30, >30 and “No”. Since this study is only concerned with readmission of less than 30 days, it will be converted so that <30 will be 1, and >30 and “No” will be 0, as seen below:
- 
-The columns “diag_1”, “diag_2” and “diag_3” are the primary, secondary, and additional diagnosis of the patient using ICD9 codes. These codes are based on the World Health Organization and stand for the International Classification of Diseases (ICD-ICD–9-CM–International Classification of Diseases, Ninth Revision, 2015). Using the code below, it shows how many unique values for each column there are:
- 
+&ensp; The columns “diag_1”, “diag_2” and “diag_3” are the primary, secondary, and additional diagnosis of the patient using ICD9 codes. These codes are based on the World Health Organization and stand for the International Classification of Diseases (ICD-ICD–9-CM–International Classification of Diseases, Ninth Revision, 2015). Using the code below, it shows how many unique values for each column there are:
+	
+![image](https://user-images.githubusercontent.com/87247651/126395867-ebcc04ef-f660-46f3-8710-d79a51a661bb.png)
+
 To make the variables usable for model making, they will be grouped into categories based on their medical code value. The categories will be “Infectious/Neoplasm”, “Immunity/Blood”, “Mental”, “Circulatory”, “Respiratory”, “Digestive”, “Pregnancy” and “Other”. The column is in character format, so first it must be changed to numeric. The code below shows the columns being changed to numerical format first:
- 
- 
+	
+![image](https://user-images.githubusercontent.com/87247651/126395903-3e897676-8b0b-46ea-841d-7b733a5669d2.png)
+![image](https://user-images.githubusercontent.com/87247651/126395918-79d2f670-7fa7-4196-86dc-e0a24d8391dc.png)
+![image](https://user-images.githubusercontent.com/87247651/126395930-e57402c9-435f-43eb-8c5c-9ce0a693bce1.png)
  
 And now the ICD9 codes will be put into the groups mentioned above:
+	
+![image](https://user-images.githubusercontent.com/87247651/126395972-c6ca9413-c72f-4443-a321-f80e7bf80cfa.png)
  
 Some of the ICD9 codes begin with letters. When changing the format to numeric, these values change to “NA”. These fall into the “Other” category and will be coded with 
 following:
+	
+![image](https://user-images.githubusercontent.com/87247651/126396011-60a515a9-108b-45dc-8029-117ba4bf8c73.png)
  
 The output below shows the three diagnosis columns have been changed to factors with eight categories depending on the ICD9 code. 
+	
+![image](https://user-images.githubusercontent.com/87247651/126396042-d99b4a14-74fc-419b-82d3-1d870d9eb309.png)
  
-	The “discharge_dispostion_id” refers references where or how the patient was discharged. The code numbers 11, 13, 14, 19, 20 and 21 all refer to patients that will not be able to be readmitted due to death or hospice care. They will need to be dropped from the dataset. The code below drops the rows with those code numbers and the table command shows they are not included in the dataset.
+&ensp; The “discharge_dispostion_id” refers references where or how the patient was discharged. The code numbers 11, 13, 14, 19, 20 and 21 all refer to patients that will not be able to be readmitted due to death or hospice care. They will need to be dropped from the dataset. The code below drops the rows with those code numbers and the table command shows they are not included in the dataset.
+
+![image](https://user-images.githubusercontent.com/87247651/126396183-dda05f74-3d85-4805-b468-be5dc9075cd1.png)
+	
 
 ---
   
