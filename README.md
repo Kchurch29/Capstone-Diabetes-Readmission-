@@ -255,13 +255,63 @@ The Variance Inflation scores now show there is no high correlations present in 
 ---
   
 # <B>Class Imbalance<B>
-  
+	
+&ensp; Class imbalance in logistic regression can cause results to be biased toward the majority class when modeling (Procrastinator, 2021). The table below shows the imbalance present in the dataset regarding the response variable:
+	
+![image](https://user-images.githubusercontent.com/87247651/126401334-f6c8209b-450c-4fef-bc94-b6aa840e20c8.png)
+
+There are many different options available to help with class imbalance, but this study will utilize the ROSE package in R. ROSE stands for Random Over Sampling Examples. This method generates artificial data based on resampling and bootstrapping (Analytics Vidhya This is the official account of the Analytics Vidhya team., 2020). The code below shows the model being created using the training dataset and ROSE function:
+	
+![image](https://user-images.githubusercontent.com/87247651/126401370-51b9d5e9-eb57-4684-912b-51c9feef312d.png)
+
+A table shows the response variable using the ROSE method is more evenly distributed:
+	
+![image](https://user-images.githubusercontent.com/87247651/126401400-1b5f0f5f-8892-48dd-a312-4d65f944ab68.png)
+
+A predictive model is now created using the Random Forest and the “rose” dataset:
+	
+![image](https://user-images.githubusercontent.com/87247651/126401428-6f2e5a10-f295-41d5-90e6-f5a04260fee8.png)
+
+A confusion matrix shows the predictive capabilities of the model:
+	
+![image](https://user-images.githubusercontent.com/87247651/126401469-78e356da-1b80-4bb7-86f5-05761964662c.png)
+
 ---
   
 # <B>Summary and Implications<B>
-  
+
+&ensp; The confusion matrix shows the model to be 87.5% percent accurate. The Specificity of the model is 95%. Specificity for this model is how well it predicts a patient not being readmitted with 30 days, and the actual number of patients to not be readmitted. The matrix shows that out of 20,415 cases, the model predicts 17,695 patients will not be readmitted. The model incorrectly predicted 880 patients would not be readmitted. The Sensitivity of the model is 10%. The model correctly predicted 183 patients would be readmitted within the 30-day period, but incorrectly predicted 1657 patients would be readmitted in the 30-day time frame. 
+&ensp; This model does an excellent job at predicting the non-readmission of the patients in this diabetic dataset. It would be difficult to use this model to predict a patient that would be readmitted with the given dataset. If more information from patients who were readmitted could be obtained, a model with higher accuracy could be created to determine a positive readmission of a patient. 
+&ensp; In looking at the Boruta plot, the most important features are the number of medications and the amount of time in the hospital for each patient. If these features could be more closely studied and any possible correlations found, a new action plan could be created to help reduce readmissions and recognize signs that lead to readmission. 
+&ensp; There are many ICD9 diagnoses involved with this study. They were grouped in a way that made them easier to model. The conditions involved with these patients could be studied more closely and grouped in a way that would possibly show a relationship between types of diagnoses and future readmission.
+
 ---
   
 # <B>References<B>
+	
+The Cost of Diabetes. The Cost of Diabetes | ADA. (n.d.). https://www.diabetes.org/resources/statistics/cost-diabetes. 
+
+Staff, D. T. N. (2018, April 23). Cost Of Diabetes Readmission. diabetestalk.net. https://diabetestalk.net/diabetes/cost-of-diabetes-readmission.
+
+Kassambara, & U, M. (2018, March 11). Logistic Regression Assumptions and Diagnostics in R. STHDA. http://www.sthda.com/english/articles/36-classification-methods-essentials/148-logistic-regression-assumptions-and-diagnostics-in-r/#:~:text=Logistic%20regression%20assumptions%20The%20logistic%20regression%20method%20assumes,logit%20of%20the%20outcome%20and%20each%20predictor%20variables. 
+
+Nicola Lunardon, G. M. (2019, May 2). ROSE-package: ROSE: Random Over-Sampling Examples in ROSE: ROSE: Random Over-Sampling Examples. https://rdrr.io/cran/ROSE/man/ROSE-package.html. 
+
+Zach. (2020, October 13). The 6 Assumptions of Logistic Regression (With Examples). Statology. https://www.statology.org/assumptions-of-logistic-regression/. 
+
+Centers for Disease Control and Prevention. (2015, November 6). ICD - ICD-9-CM - International Classification of Diseases, Ninth Revision, Clinical Modification. Centers for Disease Control and Prevention. https://www.cdc.gov/nchs/icd/icd9cm.htm. 
+
+Procrastinator. (2021, January 6). How To Dealing With Imbalanced Classes in Machine Learning. Analytics Vidhya. https://www.analyticsvidhya.com/blog/2020/10/improve-class-imbalance-class-weights/#:~:text=What%20is%20Class%20Imbalance%3F%20Class%20imbalance%20is%20a,very%20high%20compared%20to%20the%20other%20classes%20present
+
+Boruta Feature Selection in R. DataCamp Community. (n.d.). https://www.datacamp.com/community/tutorials/feature-selection-R-boruta. 
+
+Analytics VidhyaThis is the official account of the Analytics Vidhya team. (2020, July 5). Imbalanced Classification Problems in R. Analytics Vidhya. https://www.analyticsvidhya.com/blog/2016/03/practical-guide-deal-imbalanced-classification-problems/#:~:text=In%20R%2C%20packages%20such%20as%20ROSE%20and%20DMwR,based%20on%20sampling%20methods%20and%20smoothed%20bootstrap%20approach. 
+
+Kassambara, & U, M. (2018, March 11). Logistic Regression Assumptions and Diagnostics in R. STHDA. http://www.sthda.com/english/articles/36-classification-methods-essentials/148-logistic-regression-assumptions-and-diagnostics-in-r/#multicollinearity-logistic-regression. 
+
+Perfect Multicollinearity and Your Econometric Model. dummies. (n.d.). https://www.dummies.com/education/economics/econometrics/perfect-multicollinearity-and-your-econometric-model/. 
+
+Boruta Feature Selection in R. DataCamp Community. (n.d.). https://www.datacamp.com/community/tutorials/feature-selection-R-boruta. 
+
   
 ---
