@@ -126,6 +126,51 @@ The output below shows the three diagnosis columns have been changed to factors 
 
 ![image](https://user-images.githubusercontent.com/87247651/126396183-dda05f74-3d85-4805-b468-be5dc9075cd1.png)
 	
+The variables “discharge_disposition_id”, “admission_source_id” and “admission_type_id” will be changed to categorical variables and grouped by what their number values represent. A table shows how many entries there are for each value of the “admission_type_id” variable:
+	
+![image](https://user-images.githubusercontent.com/87247651/126396610-90191917-9fe6-4eb0-b2c9-37144aace31b.png)
+ 
+The code below shows the name for each category and resulting table confirms:
+	
+![image](https://user-images.githubusercontent.com/87247651/126396635-3b45d3e5-8b8d-4b2c-942a-bc5960fea77b.png)
+ 
+A similar process will be done for the “discharge_disposition_id” next. First the table:
+	
+![image](https://user-images.githubusercontent.com/87247651/126396683-e1ce4300-78ca-424f-91ba-00954008e2b6.png)
+ 
+Next, the code to change the values to categories and resulting table:
+	
+![image](https://user-images.githubusercontent.com/87247651/126396696-9f946ba5-2292-4be9-baff-17fae0daa52e.png)
+ 
+The “admission_source_id” table is next:
+	
+![image](https://user-images.githubusercontent.com/87247651/126396715-e7dbb897-8ad2-4559-a91b-faad27c79cd9.png)
+ 
+The code for categorical features and resulting table:
+	
+![image](https://user-images.githubusercontent.com/87247651/126396736-feedd659-7859-4fce-bae7-ec8dfca335c5.png)
+ 
+&ensp; In the process of cleaning, the medication “metformin.rosiglitazone” was reduced to having only “No” for all answers. This variable will not be included in the final dataset. Now that the data has been cleaned, a new dataset called “cleaned_data” will be created and all character variables made into factors for further analysis as seen below:
+	
+![image](https://user-images.githubusercontent.com/87247651/126396785-02adf45e-4e73-428c-864c-71fec16bc9dd.png)
+ 
+&ensp; The variables “num_procedures” and “number_emergency” are found to have a value of zero for most of their entries. It is difficult to transform these variables to meet the linearity to logit of the outcome assumption (Kassambara & U, 2018), so they will be converted to factors for further analysis. First, the “num_procedures” variable will be converted, and the results shown below:
+	
+![image](https://user-images.githubusercontent.com/87247651/126396828-cb23447d-0acf-45db-abaf-aed1fd7babce.png)
+ 
+Next, the same treatment for “number_emergency”:
+	
+![image](https://user-images.githubusercontent.com/87247651/126396846-dadfec40-a13b-474b-81c3-2054fe72214d.png)
+ 
+&ensp; Unlike linear regression, logistic regression does not require that there be a linear relationship between the dependent variable and the independent variables. It does, however, assume a linear relationship between numerical explanatory variables and the Logit of the dependent variable. This can be tested using the Box-Tidwell test.  The code and output below show the results for the “time_in_hospital” variable:
+	
+![image](https://user-images.githubusercontent.com/87247651/126396893-7ae644bc-6337-45ee-8f43-49f1ee9a3221.png)
+ 
+The highlighted output shows p-value for the “time_in_hospital” variable and the logarithmic transformation of the variable. Since the p-value is less than or equal 0.05, it shows this is a statistically significant variable and has a nonlinear association. This variable will require transformation to meet the assumption. When performing the log transformation, it cannot handle values of zero or negative numbers. To deal with, a constant of 0.01 is added to the variable during transformation. The code below shows the transformation and the Box_Tidwell test results of the transformed variable now named “tih”:
+	
+
+
+	
 
 ---
   
