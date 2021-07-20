@@ -1,4 +1,4 @@
-# Capstone-Diabetes-Readmission-
+# Capstone Diabetes Readmission Prediction
 Predictive Model for Diabetes Readmission
 
 ---
