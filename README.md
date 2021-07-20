@@ -168,9 +168,55 @@ Next, the same treatment for “number_emergency”:
  
 The highlighted output shows p-value for the “time_in_hospital” variable and the logarithmic transformation of the variable. Since the p-value is less than or equal 0.05, it shows this is a statistically significant variable and has a nonlinear association. This variable will require transformation to meet the assumption. When performing the log transformation, it cannot handle values of zero or negative numbers. To deal with, a constant of 0.01 is added to the variable during transformation. The code below shows the transformation and the Box_Tidwell test results of the transformed variable now named “tih”:
 	
+![image](https://user-images.githubusercontent.com/87247651/126401742-9b31c128-c94d-45a5-9d74-da1e680fbf17.png)
 
-
+The highlighted p-value shows the new variable is not statistically significant and does not show a nonlinear association. The next variable to be tested is “num_lab_procedures”, as seen below:
 	
+![image](https://user-images.githubusercontent.com/87247651/126401772-e38fab65-d1ca-46f7-8ba5-947da0b622ad.png)
+
+The p-value for this variable is not statistically significant and does not show a nonlinear association, no transformation will be needed. The Box-Tidwell will now the run on the “num_medications” variable:
+	
+![image](https://user-images.githubusercontent.com/87247651/126401797-a9a659ca-4162-41f2-bc89-531eb2e1ac8b.png)
+
+The p-value shows that it will need transformation. This will be done the same as the “time_in_hospital” variable, with the new variable being name “nm”:
+	
+![image](https://user-images.githubusercontent.com/87247651/126401833-8e220364-2361-4835-b89c-4ae12018db3a.png)
+
+The p-value indicates it is not statistically significant. The variable “number_diagnoses” is tested next:
+	
+![image](https://user-images.githubusercontent.com/87247651/126401854-eb17f3d8-0993-4658-84ca-fcc4b72c2c3c.png)
+
+Once again, the p-value show statistical significance and will require transformation. The log transformation will be applied and a new variable name “nd” will takes its place:
+	
+![image](https://user-images.githubusercontent.com/87247651/126401886-7c273d27-6e9b-451a-a459-c32675d3604d.png)
+
+The transformed variable has a p-value now showing no statistical significance. The last variables to be tested, “number_outpatient” and “number_inpatient” have values such that when Box-Tidwell test is applied, it returns an error indicating there are negative or zero values:
+	
+![image](https://user-images.githubusercontent.com/87247651/126401906-e93939a6-b3c9-4b69-85f4-8842252d2674.png)
+
+To work around this, a constant of 10 will be added to the variable and then the test applied:
+	
+![image](https://user-images.githubusercontent.com/87247651/126401929-6d54b4bd-904c-43ad-bf9d-76a5e83c4764.png)
+![image](https://user-images.githubusercontent.com/87247651/126401941-eafb3eb8-1b50-41e9-881c-dda973bf5cf8.png)
+
+The p-value shows transformation is needed, which will be applied in the same manner as the previous variables:
+	
+![image](https://user-images.githubusercontent.com/87247651/126401961-44d29342-16f8-4c19-96fd-b22ca5227bc4.png)
+
+The p-value shows no statistical significance and will be used for further analysis. The last variable is the “number_outpatient” variable. The test results are shown below:
+	
+![image](https://user-images.githubusercontent.com/87247651/126401992-b7b9e85f-e494-4c98-b51f-a9caa3594fc4.png)
+
+![image](https://user-images.githubusercontent.com/87247651/126402011-219d08af-c9ff-4364-9794-7236affc4906.png)
+
+The p-value shows transformation will be required and the log transformation and results are shown:
+	
+![image](https://user-images.githubusercontent.com/87247651/126402047-6260f069-2ed7-49e3-b715-2f5e0dcf0b3a.png)
+
+After transformation, the p-value shows no statistical significance, and the numerical values all hold the assumption of linearity to the Logit of the response variable.
+&ensp; A new dataset with the variables that will be used for model making is created in dataset name “final_data”.
+	
+![image](https://user-images.githubusercontent.com/87247651/126402100-e3418f9f-834a-445a-9082-a73e4ef0ffa1.png)
 
 ---
   
