@@ -7,15 +7,15 @@ Predictive Model for Diabetes Readmission
   
 ---
   
-1. [Research Question]
-2. [Data Collection]
-3. [Data Dictionary]
-4. [Data Extraction and Preparation]
-5. [Distribution of Variables]
-6. [Feature Selection]
-7. [Class Imbalance]
-8. [Summary and Implications]
-9. [References]
+1. [Research Question](https://github.com/Kchurch29/Capstone-Diabetes-Readmission-#research-question)
+2. [Data Collection](https://github.com/Kchurch29/Capstone-Diabetes-Readmission-#data-collection)
+3. [Data Dictionary](https://github.com/Kchurch29/Capstone-Diabetes-Readmission-#data-dictionary)
+4. [Data Extraction and Preparation](https://github.com/Kchurch29/Capstone-Diabetes-Readmission-#data-extraction-and-preparation)
+5. [Distribution of Variables](https://github.com/Kchurch29/Capstone-Diabetes-Readmission-#distribution-of-variables)
+6. [Feature Selection](https://github.com/Kchurch29/Capstone-Diabetes-Readmission-#feature-selection)
+7. [Class Imbalance](https://github.com/Kchurch29/Capstone-Diabetes-Readmission-#class-imbalance)
+8. [Summary and Implications](https://github.com/Kchurch29/Capstone-Diabetes-Readmission-#summary-and-implications)
+9. [References](https://github.com/Kchurch29/Capstone-Diabetes-Readmission-#references)
   
 ---
   
