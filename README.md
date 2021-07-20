@@ -178,7 +178,31 @@ The highlighted output shows p-value for the “time_in_hospital” variable and
   
 &ensp; A Q-Q Plot shows the the distribution of the numeric variables. It does so by plotting the quantiles of a normal distribion with the quanitiles of the numeric variables. The blue line on the graphs show perfect distribution with the actual values being in black. The closer the black line is to the blue the more perfect the distribution.
 	
+The “num_lab_procedure” variable was not transformed, and the QQ-plot shows the distribution:
+	
+![image](https://user-images.githubusercontent.com/87247651/126400331-d236fe01-f33f-4a2b-94ec-545db1902eb7.png)
 
+QQ-Plots of the transformed variables show the distribution:
+	
+![image](https://user-images.githubusercontent.com/87247651/126400364-b8b3946b-f7f1-41f6-8fe2-07f2e0b86e26.png)
+![image](https://user-images.githubusercontent.com/87247651/126400378-33dbf538-23a0-49a7-b6da-6fa72ed2ffdd.png)
+
+Graphs showing the categorical features has been included to show the amount of each group associated with the variables.
+	
+![image](https://user-images.githubusercontent.com/87247651/126400419-53d4ab44-4814-4464-8105-87f01dfc5f9d.png)
+![image](https://user-images.githubusercontent.com/87247651/126400428-623e3d3a-5e25-4e5f-ab71-d23d81315474.png)
+![image](https://user-images.githubusercontent.com/87247651/126400440-e868df08-3b60-4903-b893-424b1a014870.png)
+![image](https://user-images.githubusercontent.com/87247651/126400451-6bd2a1db-3fa9-4045-add5-7bb8e10f243f.png)
+![image](https://user-images.githubusercontent.com/87247651/126400468-d37209f3-49de-45ec-8a2a-55aad7834e98.png)
+![image](https://user-images.githubusercontent.com/87247651/126400484-fed23125-2053-442c-885b-7c710cadcdbc.png)
+![image](https://user-images.githubusercontent.com/87247651/126400495-d3950d87-9b92-49fa-be01-967276c79e53.png)
+![image](https://user-images.githubusercontent.com/87247651/126400520-a0665873-f680-4bb6-a6fd-580c530513cf.png)
+![image](https://user-images.githubusercontent.com/87247651/126400529-e7287cec-459d-4002-b35a-6a3b551d8b21.png)
+
+The final graph shows the Readmission rate:
+	
+![image](https://user-images.githubusercontent.com/87247651/126400571-1caf0977-5620-44ee-967c-ddf81b0b87d9.png)
+	
 ---
   
 # <B>Feature Selection<B>
